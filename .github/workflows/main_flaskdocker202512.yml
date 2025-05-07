@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://flaskdocker-hpc8efb2cehchzff.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a29cba623c9b42dea6b5d19b3324d898 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_47385869a1134de6b38a82218b9c805b }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_75a5e939fd004c4dad5a80ea040652a0 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_add69b0a06374fa79423a7a2b9a401e3 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: flaskdocker-hpc8efb2cehchzff.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a29cba623c9b42dea6b5d19b3324d898 }}/flask-docker:${{ github.sha }}
+        tags: flaskdocker-hpc8efb2cehchzff.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_75a5e939fd004c4dad5a80ea040652a0 }}/flask-docker:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'flaskdocker202512'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b7e38c4ee95448d78725f7ed9dc32cf7 }}
-        images: 'flaskdocker-hpc8efb2cehchzff.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a29cba623c9b42dea6b5d19b3324d898 }}/flask-docker:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2613b23e8a1244fcba98105c1aebab17 }}
+        images: 'flaskdocker-hpc8efb2cehchzff.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_75a5e939fd004c4dad5a80ea040652a0 }}/flask-docker:${{ github.sha }}'
