@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_669c288a18334562bd37840ba3951917 }}/scvanegasa/flask-docker:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_669c288a18334562bd37840ba3951917 }}/flask-docker:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'flaskdockercloud20251'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_5efada1632714394b0aac0b5dcd8e776 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_669c288a18334562bd37840ba3951917 }}/scvanegasa/flask-docker:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_669c288a18334562bd37840ba3951917 }}/flask-docker:${{ github.sha }}'
